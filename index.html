@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kuromi · Colección privada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nyctophobia: #0C1118;
+    --shadows: #49111C;
+    --salmon: #FB8076;
+    --aphrodisiac: #EA5562;
+    --christmas: #B01630;
+    --text: #FB8076;
+    --text-soft: rgba(251, 128, 118, 0.75);
+    --card: rgba(73, 17, 28, 0.35);
+    --border: rgba(234, 85, 98, 0.25);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    background: var(--nyctophobia);
+    color: var(--text);
+    min-height: 100vh;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(176, 22, 48, 0.35), transparent 60%),
+      radial-gradient(ellipse at 100% 100%, rgba(73, 17, 28, 0.6), transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  main { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; padding: 24px 20px 64px; }
+
+  .hero { text-align: center; padding: 36px 0 28px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--aphrodisiac);
+    border: 1px solid var(--border);
+    padding: 6px 14px; border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 11vw, 56px);
+    font-weight: 800; line-height: 1.02;
+    letter-spacing: -1px;
+    color: var(--salmon);
+  }
+  .hero h1 span { color: var(--aphrodisiac); }
+  .hero p {
+    margin-top: 16px;
+    font-size: 15px; line-height: 1.6;
+    color: var(--text-soft);
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--aphrodisiac);
+    margin: 56px 0 22px;
+  }
+
+  .gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  }
+  .gallery div {
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--shadows), var(--nyctophobia));
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .offers { display: grid; gap: 16px; }
+  .offer {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 26px 22px;
+    position: relative;
+  }
+  .offer.featured {
+    background: linear-gradient(170deg, rgba(176,22,48,0.55), rgba(73,17,28,0.7));
+    border-color: rgba(251,128,118,0.45);
+  }
+  .badge {
+    position: absolute; top: -11px; right: 18px;
+    background: var(--salmon); color: var(--nyctophobia);
+    font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 999px;
+  }
+  .offer h3 { font-size: 20px; font-weight: 700; color: var(--salmon); }
+  .offer .sub { font-size: 13px; color: var(--text-soft); margin-top: 6px; line-height: 1.5; }
+  .price {
+    font-size: 40px; font-weight: 800; color: #fff; margin: 18px 0 4px;
+    letter-spacing: -1px;
+  }
+  .price small { font-size: 14px; font-weight: 600; color: var(--text-soft); letter-spacing: 0; }
+  .offer ul { list-style: none; margin: 16px 0 22px; display: grid; gap: 9px; }
+  .offer li {
+    font-size: 14px; line-height: 1.45; color: var(--text);
+    padding-left: 22px; position: relative;
+  }
+  .offer li::before {
+    content: ""; position: absolute; left: 0; top: 7px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--aphrodisiac);
+  }
+  .btn {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    text-decoration: none;
+    font-family: inherit; font-weight: 800; font-size: 14px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 16px; border-radius: 14px;
+    background: var(--christmas); color: #fff;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .btn:hover { background: var(--aphrodisiac); transform: translateY(-2px); }
+  .btn.ghost {
+    background: transparent; color: var(--salmon);
+    border: 1px solid rgba(251,128,118,0.5);
+  }
+  .btn.ghost:hover { background: var(--shadows); }
+  .pay-note {
+    display: block; text-align: center; margin-top: 10px;
+    font-size: 11px; color: var(--text-soft); letter-spacing: .5px;
+  }
+
+  .steps { display: grid; gap: 12px; }
+  .step {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 18px; border-radius: 16px;
+    background: var(--card); border: 1px solid var(--border);
+  }
+  .step b { font-size: 18px; color: var(--aphrodisiac); min-width: 26px; }
+  .step p { font-size: 14px; line-height: 1.5; color: var(--text); }
+
+  details { border-bottom: 1px solid var(--border); padding: 16px 4px; }
+  summary {
+    cursor: pointer; font-weight: 600; font-size: 15px; color: var(--salmon);
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: " +"; color: var(--aphrodisiac); }
+  details[open] summary::after { content: " −"; }
+  details p { margin-top: 10px; font-size: 14px; line-height: 1.6; color: var(--text-soft); }
+
+  footer {
+    text-align: center; margin-top: 56px;
+    font-size: 12px; color: var(--text-soft); letter-spacing: 1px;
+  }
+  footer .mark { font-size: 22px; margin-bottom: 8px; color: var(--aphrodisiac); }
+  .disclaimer { margin-top: 14px; font-size: 11px; line-height: 1.5; opacity: .7; }
+</style>
+</head>
+<body>
+<main>
+
+  <section class="hero">
+    <span class="tag">Colección privada</span>
+    <h1>Kuromi<br><span>after dark</span></h1>
+    <p>Fotos suaves, miradas que se quedan. Elegí cómo llevarte un pedacito de mi mundo.</p>
+    <img src="banner.jpg" alt="Kuromi" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;margin-top:28px;border:1px solid var(--border);">
+  </section>
+
+  <h2 class="section-title">Vistazo</h2>
+  <section class="gallery">
+    <div><img src="foto1.jpg" alt="Vista previa 1"></div>
+    <div><img src="foto2.jpg" alt="Vista previa 2"></div>
+    <div><img src="foto3.jpg" alt="Vista previa 3"></div>
+  </section>
+
+  <h2 class="section-title">Elegí tu opción</h2>
+  <section class="offers">
+
+    <article class="offer">
+      <h3>Foto random</h3>
+      <p class="sub">Una imagen sorpresa de la colección. Ideal para probar.</p>
+      <div class="price">$2.000 <small>ARS</small></div>
+      <ul>
+        <li>1 foto en alta resolución</li>
+        <li>Entrega por email tras confirmar el pago</li>
+        <li>Formato vertical 9:16</li>
+      </ul>
+      <!-- PEGAR AQUÍ el link de pago de Mercado Pago para la foto random -->
+      <a class="btn ghost" href="https://mpago.la/2E2SJbt" target="_blank" rel="noopener">Comprar foto random</a>
+      <span class="pay-note">Pago seguro con Mercado Pago</span>
+    </article>
+
+    <article class="offer featured">
+      <span class="badge">Más elegido</span>
+      <h3>Pack de 10 fotos</h3>
+      <p class="sub">Diez imágenes de la colección, sin repetir. Te sale la mitad que comprarlas sueltas.</p>
+      <div class="price">$10.000 <small>ARS</small></div>
+      <ul>
+        <li>10 fotos en alta resolución</li>
+        <li>Entrega por email tras confirmar el pago</li>
+        <li>Formato vertical 9:16</li>
+      </ul>
+      <!-- PEGAR AQUÍ el link de pago de Mercado Pago para el pack -->
+      <a class="btn" href="https://mpago.la/1ELyceL" target="_blank" rel="noopener">Comprar pack de 10</a>
+      <span class="pay-note">Pago seguro con Mercado Pago</span>
+    </article>
+
+  </section>
+
+  <h2 class="section-title">Cómo funciona</h2>
+  <section class="steps">
+    <div class="step"><b>01</b><p>Elegís tu opción y pagás con Mercado Pago.</p></div>
+    <div class="step"><b>02</b><p>Te escribo al mail de tu pago y te envío las fotos.</p></div>
+    <div class="step"><b>03</b><p>Si querés más, la colección se renueva cada tanto.</p></div>
+  </section>
+
+  <h2 class="section-title">Preguntas</h2>
+  <section>
+    <details>
+      <summary>¿Qué incluye cada compra?</summary>
+      <p>Fotos en alta resolución, digitales. No hay envío físico.</p>
+    </details>
+    <details>
+      <summary>¿Cuánto tarda la entrega?</summary>
+      <p>Apenas se acredita el pago, te envío las fotos al mail con el que pagaste.</p>
+    </details>
+    <details>
+      <summary>¿Puedo pasar de la foto random al pack?</summary>
+      <p>Sí. Escribime con el comprobante y te descuento lo pagado por la foto random.</p>
+    </details>
+    <details>
+      <summary>¿Hay devoluciones?</summary>
+      <p>Por ser contenido digital, no hay devoluciones una vez entregado. Si el archivo llega con algún problema, lo resolvemos.</p>
+    </details>
+  </section>
+
+  <section style="margin-top:48px;text-align:center;">
+    <a class="btn ghost" href="https://www.instagram.com/greykuromi/" target="_blank" rel="noopener">Escribime por Instagram</a>
+  </section>
+
+  <footer>
+    <div class="mark">✦</div>
+    <p>Kuromi · Colección privada</p>
+    <p class="disclaimer">Imágenes generadas con IA. Uso personal. Prohibida la redistribución.</p>
+  </footer>
+
+</main>
+</body>
+</html>
